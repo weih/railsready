@@ -91,12 +91,6 @@ echo -e "\n=> Creating install dir..."
 cd && mkdir -p railsready/src && cd railsready && touch install.log
 echo "==> done..."
 
-echo -e "\n=> Ensuring there is a .bashrc and .bash_profile..."
-rm -f $HOME/.bashrc && rm -f $HOME/.bash_profile
-touch $HOME/.bashrc && touch $HOME/.bash_profile
-echo 'PS1="[\u@\h:\w] $ "' >> $HOME/.bashrc
-echo "==> done..."
-
 echo -e "\n=> Downloading and running recipe for $distro...\n"
 #Download the distro specific recipe and run it, passing along all the variables as args
 wget --no-check-certificate -O $railsready_path/src/$distro.sh https://github.com/joshfng/railsready/raw/master/recipes/$distro.sh && cd $railsready_path/src && bash $distro.sh $ruby_version $ruby_version_string $ruby_source_url $ruby_source_tar_name $ruby_source_dir_name $whichRuby $railsready_path $log_file
@@ -125,12 +119,12 @@ elif [ $whichRuby -eq 2 ] ; then
   [[ -f rvm-install-head ]] && rm -f rvm-install-head
   echo -e "\n=> Setting up RVM to load with new shells..."
   #if RVM is installed as user root it goes to /usr/local/rvm/ not ~/.rvm
-  echo 'source $HOME/.bash_profile' >> $HOME/.bashrc
+  echo  '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # Load RVM into a shell session *as a function*' >> "$HOME/.bash_profile"
   echo "==> done..."
   echo "=> Loading RVM..."
-  source ~/.rvm/scripts/rvm
   source ~/.bashrc
   source ~/.bash_profile
+  source ~/.rvm/scripts/rvm
   echo "==> done..."
   echo -e "\n=> Installing Ruby $ruby_version_string (this will take a while)..."
   echo -e "=> More information about installing rubies can be found at http://rvm.beginrescueend.com/rubies/installing/ \n"
@@ -171,6 +165,6 @@ echo -e "\n#################################"
 echo    "### Installation is complete! ###"
 echo -e "#################################\n"
 
-echo -e "\n !!! logout and back in to access Ruby or run source ~/.bash_profile !!!\n"
+echo -e "\n !!! logout and back in to access Ruby !!!\n"
 
 echo -e "\n Thanks!\n-Josh\n"
