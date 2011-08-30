@@ -1,8 +1,8 @@
 #Rails Ready
 ###Ruby and Rails setup script for Linux systems
 ###Distros supported:
- * Ubuntu 10.04 LTS and 10.10
- * CentOS 5.5 (utilizes the Fedora EPEL repo)
+ * Ubuntu 10.04 LTS, 10.10 and 11.04
+ * CentOS 5 (utilizes the Fedora EPEL repo)
 
 # 
 ###Run this on a fresh install. It WILL update your system!
