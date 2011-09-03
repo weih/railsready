@@ -73,7 +73,7 @@ sudo -v >/dev/null 2>&1 || { echo $script_runner has no sudo privileges ; exit 1
 # Ask if you want to build Ruby or install RVM
 echo -e "\n"
 echo "Build Ruby or install RVM?"
-echo "=> 1. Build from souce"
+echo "=> 1. Build from source"
 echo "=> 2. Install RVM"
 echo -n "Select your Ruby type [1 or 2]? "
 read whichRuby
