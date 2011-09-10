@@ -3,6 +3,7 @@
 ###Distros supported:
  * Ubuntu 10.04 LTS, 10.10 and 11.04
  * CentOS 5 (utilizes the Fedora EPEL repo)
+ * OSX (requires XCode to be installed)
 
 # 
 ###Run this on a fresh install. It WILL update your system!
@@ -10,6 +11,7 @@
 ###To run:
 ####Linux
   * `wget --no-check-certificate https://github.com/joshfng/railsready/raw/master/railsready.sh && bash railsready.sh`
+
 ####OSX
   * `curl -O https://raw.github.com/joshfng/railsready/master/railsready.sh && bash railsready.sh`
 
