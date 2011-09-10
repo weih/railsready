@@ -21,7 +21,7 @@ log_file=$8
 
 #echo "vars set: $ruby_version $ruby_version_string $ruby_source_url $ruby_source_tar_name $ruby_source_dir_name $whichRuby $railsready_path $log_file"
 
-echo -e "\nInstalling Homebrew\n"
+echo -e "\nInstalling Homebrew"
 /usr/bin/ruby -e "$(curl -fsSL https://raw.github.com/gist/323731)" >> $log_file 2>&1
 echo "==> done..."
 

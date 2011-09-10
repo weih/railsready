@@ -8,11 +8,15 @@
 ###Run this on a fresh install. It WILL update your system!
 
 ###To run:
+####Linux
   * `wget --no-check-certificate https://github.com/joshfng/railsready/raw/master/railsready.sh && bash railsready.sh`
-  * The script will ask if you want to build Ruby from source or install RVM
+####OSX
+  * `curl -O https://raw.github.com/joshfng/railsready/master/railsready.sh && bash railsready.sh`
+
+The script will ask if you want to build Ruby from source or install RVM
 
 ###What this gives you:
-  * An updated system
+  * An updated system (Linux only)
   * Ruby 1.9.2 latest patch level (installed to /usr/local/bin/ruby) or RVM running 1.9.2 latest patch level
   * Imagemagick
   * libs needed to run Rails (sqlite, mysql, etc)
