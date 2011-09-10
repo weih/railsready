@@ -140,7 +140,9 @@ elif [ $whichRuby -eq 2 ] ; then
   if [ -f ~/.bash_profile ] ; then
     source ~/.bash_profile
   fi
-  source ~/.rvm/scripts/rvm
+  if [ -f ~/.rvm/scripts/rvm ] ; then
+    source ~/.rvm/scripts/rvm
+  fi
   echo "==> done..."
   echo -e "\n=> Installing Ruby $ruby_version_string (this will take a while)..."
   echo -e "=> More information about installing rubies can be found at http://rvm.beginrescueend.com/rubies/installing/ \n"
@@ -157,8 +159,12 @@ fi
 
 # Reload bash
 echo -e "\n=> Reloading shell so ruby and rubygems are available..."
-source $HOME/.bashrc
-source $HOME/.bash_profile
+if [ -f ~/.bashrc ] ; then
+  source ~/.bashrc
+fi
+if [ -f ~/.bash_profile ] ; then
+  source ~/.bash_profile
+fi
 echo "==> done..."
 
 echo -e "\n=> Updating Rubygems..."
