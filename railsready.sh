@@ -36,13 +36,21 @@ echo "########## Rails Ready ##########"
 echo "#################################"
 
 #determine the distro
-if [[ $distro_sig =~ ubuntu ]] ; then
-  distro="ubuntu"
-elif [[ $distro_sig =~ centos ]] ; then
-  distro="centos"
-else
-  echo -e "\nRails Ready currently only supports Ubuntu and CentOS\n"
-  exit 1
+if [[ $MACHTYPE = *linux* ]]
+  if [[ $distro_sig =~ ubuntu ]] ; then
+    distro="ubuntu"
+  elif [[ $distro_sig =~ centos ]] ; then
+    distro="centos"
+  else
+    echo -e "\nRails Ready currently only supports Ubuntu and CentOS and OSX\n"
+    exit 1
+  fi
+elif [[ $MACHTYPE = *darwin* ]]
+  distro="osx"
+    if [[ ! -s /Library/Developer/Shared/XcodeTools.plist ]]
+      printf "XCode must be install in order to build required."
+      exit 1
+    fi  
 fi
 
 #now check if user is root
@@ -93,7 +101,7 @@ echo "==> done..."
 
 echo -e "\n=> Downloading and running recipe for $distro...\n"
 #Download the distro specific recipe and run it, passing along all the variables as args
-wget --no-check-certificate -O $railsready_path/src/$distro.sh https://github.com/joshfng/railsready/raw/master/recipes/$distro.sh && cd $railsready_path/src && bash $distro.sh $ruby_version $ruby_version_string $ruby_source_url $ruby_source_tar_name $ruby_source_dir_name $whichRuby $railsready_path $log_file
+wget --no-check-certificate -O $railsready_path/src/$distro.sh https://github.com/joshfng/railsready/raw/osx-support/recipes/$distro.sh && cd $railsready_path/src && bash $distro.sh $ruby_version $ruby_version_string $ruby_source_url $ruby_source_tar_name $ruby_source_dir_name $whichRuby $railsready_path $log_file
 echo -e "\n==> done running $distro specific commands..."
 
 #now that all the distro specific packages are installed lets get Ruby
