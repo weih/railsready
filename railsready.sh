@@ -35,22 +35,22 @@ echo "########## Rails Ready ##########"
 echo "#################################"
 
 #determine the distro
-if [[ $MACHTYPE = *linux* ]]
+if [[ $MACHTYPE = *linux* ]] ; then
   distro_sig=$(cat /etc/issue)
   if [[ $distro_sig =~ ubuntu ]] ; then
     distro="ubuntu"
   elif [[ $distro_sig =~ centos ]] ; then
     distro="centos"
-  else
-    echo -e "\nRails Ready currently only supports Ubuntu and CentOS and OSX\n"
-    exit 1
   fi
-elif [[ $MACHTYPE = *darwin* ]]
+elif [[ $MACHTYPE = *darwin* ]] ; then
   distro="osx"
-    if [[ ! -s /Library/Developer/Shared/XcodeTools.plist ]]
+    if [[ ! -s /Library/Developer/Shared/XcodeTools.plist ]] ; then
       printf "XCode must be install in order to build required."
       exit 1
     fi  
+else
+  echo -e "\nRails Ready currently only supports Ubuntu and CentOS and OSX\n"
+  exit 1
 fi
 
 #now check if user is root
