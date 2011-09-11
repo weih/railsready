@@ -10,7 +10,7 @@
 
 ###To run:
 ####Linux
-  * `wget --no-check-certificate https://github.com/joshfng/railsready/raw/master/railsready.sh && bash railsready.sh`
+  * `wget --no-check-certificate https://raw.github.com/joshfng/railsready/master/railsready.sh && bash railsready.sh`
 
 ####OSX
   * `curl -O https://raw.github.com/joshfng/railsready/master/railsready.sh && bash railsready.sh`
