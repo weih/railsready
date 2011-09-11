@@ -45,7 +45,7 @@ if [[ $MACHTYPE = *linux* ]] ; then
 elif [[ $MACHTYPE = *darwin* ]] ; then
   distro="osx"
     if [[ ! -s /Library/Developer/Shared/XcodeTools.plist ]] ; then
-      echo -e "\nXCode must be install in order to build required software.\n"
+      echo -e "\nXCode must be installed in order to build required software.\n"
       exit 1
     fi  
 else
@@ -102,9 +102,9 @@ echo "==> done..."
 echo -e "\n=> Downloading and running recipe for $distro...\n"
 #Download the distro specific recipe and run it, passing along all the variables as args
 if [[ $MACHTYPE = *linux* ]] ; then
-  wget --no-check-certificate -O $railsready_path/src/$distro.sh https://raw.github.com/joshfng/railsready/osx-support/recipes/$distro.sh && cd $railsready_path/src && bash $distro.sh $ruby_version $ruby_version_string $ruby_source_url $ruby_source_tar_name $ruby_source_dir_name $whichRuby $railsready_path $log_file
+  wget --no-check-certificate -O $railsready_path/src/$distro.sh https://raw.github.com/joshfng/railsready/master/recipes/$distro.sh && cd $railsready_path/src && bash $distro.sh $ruby_version $ruby_version_string $ruby_source_url $ruby_source_tar_name $ruby_source_dir_name $whichRuby $railsready_path $log_file
 else
-  cd $railsready_path/src && curl -O https://raw.github.com/joshfng/railsready/osx-support/recipes/$distro.sh && bash $distro.sh $ruby_version $ruby_version_string $ruby_source_url $ruby_source_tar_name $ruby_source_dir_name $whichRuby $railsready_path $log_file
+  cd $railsready_path/src && curl -O https://raw.github.com/joshfng/railsready/master/recipes/$distro.sh && bash $distro.sh $ruby_version $ruby_version_string $ruby_source_url $ruby_source_tar_name $ruby_source_dir_name $whichRuby $railsready_path $log_file
 fi
 echo -e "\n==> done running $distro specific commands..."
 
