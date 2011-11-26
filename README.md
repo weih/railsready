@@ -20,7 +20,7 @@ The script will ask if you want to build Ruby from source or install RVM
 ###What this gives you:
   * An updated system (Linux only)
   * Homebrew (OSX only)
-  * Ruby 1.9.2 latest patch level (installed to /usr/local/bin/ruby) or RVM running 1.9.2 latest patch level
+  * Ruby 1.9.3 latest patch level (installed to /usr/local/bin/ruby) or RVM running 1.9.3 latest patch level
   * Imagemagick
   * libs needed to run Rails (sqlite, mysql, etc)
   * Bundler, Passenger, and Rails gems
