@@ -34,9 +34,9 @@ A note about RVM+passenger+nginx:
 Passenger installed via RVM can't locate the OpenSSL package installed on Ubuntu. A user contributed fix is as follows:
 
 ````
-rvm remove 1.9.2
-rvm package install openssl
-rvm install 1.9.2 --with-openssl-dir=$HOME/.rvm/usr
+rvm remove 1.9.3
+rvm pkg install openssl
+rvm install 1.9.3 --with-openssl-dir=$HOME/.rvm/usr
 rvmsudo passenger-install-nginx-module
 ````
 
