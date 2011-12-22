@@ -148,7 +148,7 @@ elif [ $whichRuby -eq 2 ] ; then
   echo -e "=> More information about installing rubies can be found at http://rvm.beginrescueend.com/rubies/installing/ \n"
   rvm install $ruby_version >> $log_file 2>&1
   echo -e "\n==> done..."
-  echo -e "\n=> Using 1.9.2 and setting it as default for new shells..."
+  echo -e "\n=> Using $ruby_version and setting it as default for new shells..."
   echo "=> More information about Rubies can be found at http://rvm.beginrescueend.com/rubies/default/"
   rvm --default use $ruby_version >> $log_file 2>&1
   echo "==> done..."
