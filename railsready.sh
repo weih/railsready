@@ -29,7 +29,8 @@ control_c()
 # trap keyboard interrupt (control-c)
 trap control_c SIGINT
 
-echo -e "\n\n"
+clear
+
 echo "#################################"
 echo "########## Rails Ready ##########"
 echo "#################################"
