@@ -19,6 +19,7 @@ ruby_source_dir_name="ruby-1.9.3-p0"
 script_runner=$(whoami)
 railsready_path=$(cd && pwd)/railsready
 log_file="$railsready_path/install.log"
+railsready_recipes_path="https://raw.github.com/joshfng/railsready/master/recipes"
 
 control_c()
 {
@@ -48,7 +49,7 @@ elif [[ $MACHTYPE = *darwin* ]] ; then
     if [[ ! -s /Library/Developer/Shared/XcodeTools.plist ]] ; then
       echo -e "\nXCode must be installed in order to build required software.\n"
       exit 1
-    fi  
+    fi
 else
   echo -e "\nRails Ready currently only supports Ubuntu and CentOS and OSX\n"
   exit 1
@@ -103,9 +104,9 @@ echo "==> done..."
 echo -e "\n=> Downloading and running recipe for $distro...\n"
 #Download the distro specific recipe and run it, passing along all the variables as args
 if [[ $MACHTYPE = *linux* ]] ; then
-  wget --no-check-certificate -O $railsready_path/src/$distro.sh https://raw.github.com/joshfng/railsready/master/recipes/$distro.sh && cd $railsready_path/src && bash $distro.sh $ruby_version $ruby_version_string $ruby_source_url $ruby_source_tar_name $ruby_source_dir_name $whichRuby $railsready_path $log_file
+  wget --no-check-certificate -O $railsready_path/src/$distro.sh railsready_recipes_path/$distro.sh && cd $railsready_path/src && bash $distro.sh $ruby_version $ruby_version_string $ruby_source_url $ruby_source_tar_name $ruby_source_dir_name $whichRuby $railsready_path $log_file
 else
-  cd $railsready_path/src && curl -O https://raw.github.com/joshfng/railsready/master/recipes/$distro.sh && bash $distro.sh $ruby_version $ruby_version_string $ruby_source_url $ruby_source_tar_name $ruby_source_dir_name $whichRuby $railsready_path $log_file
+  cd $railsready_path/src && curl -O railsready_recipes_path/$distro.sh && bash $distro.sh $ruby_version $ruby_version_string $ruby_source_url $ruby_source_tar_name $ruby_source_dir_name $whichRuby $railsready_path $log_file
 fi
 echo -e "\n==> done running $distro specific commands..."
 
