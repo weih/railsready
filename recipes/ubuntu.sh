@@ -57,6 +57,8 @@ if [ ! -f $(which convert) ]; then
   echo -e "\n=> Installing imagemagick (this may take a while)..."
   sudo $pm -y install imagemagick libmagick9-dev >> $log_file 2>&1
   echo "==> done..."
+else
+  echo "==> ImageMagick already installed..."
 fi
 
 # Install git-core
@@ -64,4 +66,6 @@ if [ ! -f $(which git) ]; then
   echo -e "\n=> Installing git..."
   sudo $pm -y install git-core >> $log_file 2>&1
   echo "==> done..."
+else
+  echo "==> Git already installed..."
 fi
