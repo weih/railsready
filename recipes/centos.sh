@@ -42,11 +42,16 @@ sudo yum install -y gcc-c++ patch \
 echo "==> done..."
 
 # Install imagemagick
-echo -e "\n=> Installing imagemagick (this may take a while)..."
-sudo yum install -y ImageMagick >> $log_file 2>&1
-echo "==> done..."
+# Convert is a part of imagemagick
+if [ ! -f $(which convert) ]; then
+  echo -e "\n=> Installing imagemagick (this may take a while)..."
+  sudo yum install -y ImageMagick >> $log_file 2>&1
+  echo "==> done..."
+fi
 
 # Install Git
-echo -e "\n=> Installing git..."
-sudo yum install -y git >> $log_file 2>&1
-echo "==> done..."
+if [ ! -f $(which git) ]; then
+  echo -e "\n=> Installing git..."
+  sudo yum install -y git >> $log_file 2>&1
+  echo "==> done..."
+fi
