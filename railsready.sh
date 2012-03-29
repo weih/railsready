@@ -132,8 +132,12 @@ elif [ $whichRuby -eq 2 ] ; then
   [[ -f rvm-installer ]] && rm -f rvm-installer
   echo -e "\n=> Setting up RVM to load with new shells..."
   #if RVM is installed as user root it goes to /usr/local/rvm/ not ~/.rvm
-  echo  '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # Load RVM into a shell session *as a function*' >> "$HOME/.bash_profile"
-  echo  '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # Load RVM into a shell session *as a function*' >> "$HOME/.bashrc"
+  if [ -f ~/.bashrc ] ; then
+    echo  '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # Load RVM into a shell session *as a function*' >> "$HOME/.bashrc"
+  fi
+  if [ -f ~/.bash_profile ] ; then
+    echo  '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # Load RVM into a shell session *as a function*' >> "$HOME/.bash_profile"
+  fi
   echo "==> done..."
   echo "=> Loading RVM..."
   if [ -f ~/.bashrc ] ; then
