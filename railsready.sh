@@ -45,7 +45,7 @@ if [[ $MACHTYPE = *linux* ]] ; then
   fi
 elif [[ $MACHTYPE = *darwin* ]] ; then
   distro="osx"
-    if [[ ! -s /Library/Developer/Shared/XcodeTools.plist ]] ; then
+    if [[ ! -f $(which gcc) ]]; then
       echo -e "\nXCode must be installed in order to build required software.\n"
       exit 1
     fi  
