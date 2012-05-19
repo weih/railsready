@@ -3,7 +3,7 @@
 ###Distros supported:
  * Ubuntu
  * CentOS 5 (utilizes the Fedora EPEL repo)
- * OSX (requires XCode to be installed)
+ * OSX (requires XCode/GCC to be installed. Install command line tools via XCode->preferences to install GCC)
 
 #
 ###Run this on a fresh install. It WILL update your system!
