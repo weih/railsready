@@ -30,12 +30,6 @@ fi
 
 echo -e "\nUsing $pm for package installation\n"
 
-# Update the system before going any further
-echo -e "\n=> Updating system (this may take a while)..."
-sudo $pm update >> $log_file 2>&1 \
- && sudo $pm -y upgrade >> $log_file 2>&1
-echo "==> done..."
-
 # Install build tools
 echo -e "\n=> Installing build tools..."
 sudo $pm -y install \

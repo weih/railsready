@@ -28,11 +28,6 @@ echo -e "\n=> Adding EPEL repo..."
 sudo rpm -Uvh $epel_repo_url
 echo "==> done..."
 
-# Update the system before going any further
-echo -e "\n=> Updating system (this may take a while)..."
-sudo yum update -y >> $log_file 2>&1
-echo "==> done..."
-
 # Install build tools
 echo -e "\n=> Installing build tools..."
 sudo yum install -y gcc-c++ patch \
