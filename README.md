@@ -6,8 +6,6 @@
  * OSX (requires XCode/GCC to be installed. Install command line tools via XCode->preferences to install GCC)
 
 #
-###Run this on a fresh install. It WILL update your system!
-
 ###To run:
 ####Linux
   * `wget --no-check-certificate https://raw.github.com/joshfng/railsready/master/railsready.sh && bash railsready.sh`
