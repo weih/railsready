@@ -50,7 +50,7 @@ elif [[ $MACHTYPE = *darwin* ]] ; then
       exit 1
     fi
 else
-  echo -e "\nRails Ready currently only supports Ubuntu and CentOS and OSX\n"
+  echo -e "\nRails Ready currently only supports Ubuntu, CentOS and OSX\n"
   exit 1
 fi
 
@@ -61,12 +61,10 @@ if [ $script_runner == "root" ] ; then
 fi
 
 echo -e "\n\n"
-echo "!!! This script will update your system! Run on a fresh install only !!!"
 echo "run tail -f $log_file in a new terminal to watch the install"
 
 echo -e "\n"
 echo "What this script gets you:"
-echo " * An updated system"
 echo " * Ruby $ruby_version_string"
 echo " * Imagemagick"
 echo " * libs needed to run Rails (sqlite, mysql, etc)"
