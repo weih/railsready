@@ -12,10 +12,10 @@ shopt -s nocaseglob
 set -e
 
 ruby_version="1.9.3"
-ruby_version_string="1.9.3-p286"
-ruby_source_url="http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p286.tar.gz"
-ruby_source_tar_name="ruby-1.9.3-p286.tar.gz"
-ruby_source_dir_name="ruby-1.9.3-p286"
+ruby_version_string="1.9.3-p327"
+ruby_source_url="http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p327.tar.gz"
+ruby_source_tar_name="ruby-1.9.3-p327.tar.gz"
+ruby_source_dir_name="ruby-1.9.3-p327"
 script_runner=$(whoami)
 railsready_path=$(cd && pwd)/railsready
 log_file="$railsready_path/install.log"
