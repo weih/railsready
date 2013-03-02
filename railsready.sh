@@ -125,10 +125,7 @@ if [ $whichRuby -eq 1 ] ; then
 elif [ $whichRuby -eq 2 ] ; then
   #thanks wayneeseguin :)
   echo -e "\n=> Installing RVM the Ruby enVironment Manager http://rvm.beginrescueend.com/rvm/install/ \n"
-  curl -O -L -k https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer
-  chmod +x rvm-installer
-  "$PWD/rvm-installer" >> $log_file 2>&1
-  [[ -f rvm-installer ]] && rm -f rvm-installer
+  \curl -L https://get.rvm.io | bash >> $log_file 2>&1
   echo -e "\n=> Setting up RVM to load with new shells..."
   #if RVM is installed as user root it goes to /usr/local/rvm/ not ~/.rvm
   if [ -f ~/.bashrc ] ; then
