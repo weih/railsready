@@ -150,9 +150,6 @@ elif [ $whichRuby -eq 2 ] ; then
   if [ -f ~/.bash_profile ] ; then
     source ~/.bash_profile
   fi
-  if [ -f ~/.rvm/scripts/rvm ] ; then
-    source ~/.rvm/scripts/rvm
-  fi
   echo "==> done..."
   echo -e "\n=> Installing Ruby $ruby_version_string (this will take a while)..."
   echo -e "=> More information about installing rubies can be found at http://rvm.beginrescueend.com/rubies/installing/ \n"
