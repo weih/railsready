@@ -139,6 +139,9 @@ elif [ $whichRuby -eq 2 ] ; then
   fi
   echo "==> done..."
   echo "=> Loading RVM..."
+  if [ -f ~/.profile ] ; then
+    source ~/.profile
+  fi
   if [ -f ~/.bashrc ] ; then
     source ~/.bashrc
   fi
