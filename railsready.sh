@@ -128,11 +128,6 @@ elif [ $whichRuby -eq 2 ] ; then
   \curl -L https://get.rvm.io | bash >> $log_file 2>&1
   echo -e "\n=> Setting up RVM to load with new shells..."
   #if RVM is installed as user root it goes to /usr/local/rvm/ not ~/.rvm
-  if [ -f ~/.bashrc ] ; then
-    if [ -f ~/.profile ] ; then
-      echo 'source ~/.profile' >> "$HOME/.bashrc"
-    fi
-  fi
   if [ -f ~/.bash_profile ] ; then
     if [ -f ~/.profile ] ; then
       echo 'source ~/.profile' >> "$HOME/.bash_profile"
