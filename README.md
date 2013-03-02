@@ -17,7 +17,7 @@ The script will ask if you want to build Ruby from source or install RVM
 
 ###What this gives you:
   * Homebrew (OSX only)
-  * Ruby 1.9.3 latest patch level (installed to /usr/local/bin/ruby) or RVM running 1.9.3 latest patch level
+  * Ruby 2.0.0 latest patch level (installed to /usr/local/bin/ruby) or RVM running 2.0.0 latest patch level
   * Imagemagick
   * libs needed to run Rails (sqlite, mysql, etc)
   * Bundler, Passenger, and Rails gems
@@ -31,9 +31,9 @@ A note about RVM+passenger+nginx:
 Passenger installed via RVM can't locate the OpenSSL package installed on Ubuntu. A user contributed fix is as follows:
 
 ````
-rvm remove 1.9.3
+rvm remove 2.0.0
 rvm pkg install openssl
-rvm install 1.9.3 --with-openssl-dir=$HOME/.rvm/usr
+rvm install 2.0.0 --with-openssl-dir=$HOME/.rvm/usr
 rvmsudo passenger-install-nginx-module
 ````
 
