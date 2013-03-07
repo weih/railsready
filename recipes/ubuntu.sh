@@ -46,11 +46,6 @@ echo -e "\n=> Installing libs needed for sqlite and mysql..."
 sudo $pm -y install libsqlite3-0 sqlite3 libsqlite3-dev libmysqlclient-dev >> $log_file 2>&1
 echo "==> done..."
 
-# Install imagemagick
-echo -e "\n=> Installing imagemagick (this may take a while)..."
-sudo $pm -y install imagemagick libmagick-dev libmagickwand-dev libmagickcore-dev >> $log_file 2>&1
-echo "==> done..."
-
 # Install git-core
 echo -e "\n=> Installing git..."
 sudo $pm -y install git-core >> $log_file 2>&1
