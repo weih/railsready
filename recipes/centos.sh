@@ -36,11 +36,6 @@ sudo yum install -y gcc-c++ patch \
  make automake bash curl sqlite-devel mysql-devel >> $log_file 2>&1
 echo "==> done..."
 
-# Install imagemagick
-echo -e "\n=> Installing imagemagick (this may take a while)..."
-sudo yum install -y ImageMagick ImageMagick-devel >> $log_file 2>&1
-echo "==> done..."
-
 # Install Git
 echo -e "\n=> Installing git..."
 sudo yum install -y git >> $log_file 2>&1
