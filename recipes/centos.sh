@@ -19,7 +19,7 @@ script_runner=$(whoami)
 railsready_path=$7
 log_file=$8
 
-epel_repo_url="http://download.fedora.redhat.com/pub/epel/5/i386/epel-release-5-4.noarch.rpm"
+epel_repo_url="http://dl.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm"
 
 #echo "vars set: $ruby_version $ruby_version_string $ruby_source_url $ruby_source_tar_name $ruby_source_dir_name $whichRuby $railsready_path $log_file"
 
