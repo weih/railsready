@@ -18,7 +18,6 @@ The script will ask if you want to build Ruby from source or install RVM
 ###What this gives you:
   * Homebrew (OSX only)
   * Ruby 2.0.0 latest patch level (installed to /usr/local/bin/ruby) or RVM running 2.0.0 latest patch level
-  * Imagemagick
   * libs needed to run Rails (sqlite, mysql, etc)
   * Bundler, Passenger, and Rails gems
   * Git
