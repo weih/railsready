@@ -174,9 +174,9 @@ echo "==> done..."
 
 echo -e "\n=> Installing Bundler, Passenger and Rails..."
 if [ $whichRuby -eq 1 ] ; then
-  sudo gem install bundler passenger rails --no-ri --no-rdoc >> $log_file 2>&1
+  sudo gem install bundler passenger rails --no-ri --no-rdoc -f >> $log_file 2>&1
 elif [ $whichRuby -eq 2 ] ; then
-  gem install bundler passenger rails --no-ri --no-rdoc >> $log_file 2>&1
+  gem install bundler passenger rails --no-ri --no-rdoc -f >> $log_file 2>&1
 fi
 echo "==> done..."
 
