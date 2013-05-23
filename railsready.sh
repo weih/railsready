@@ -82,15 +82,18 @@ echo -e "\n"
 echo "Build Ruby or install RVM?"
 echo "=> 1. Build from source"
 echo "=> 2. Install RVM"
-echo -n "Select your Ruby type [1 or 2]? "
+echo "=> 3. Install rbenv"
+echo -n "Select your Ruby type [1, 2, 3]? "
 read whichRuby
 
 if [ $whichRuby -eq 1 ] ; then
   echo -e "\n\n!!! Set to build Ruby from source and install system wide !!! \n"
 elif [ $whichRuby -eq 2 ] ; then
   echo -e "\n\n!!! Set to install RVM for user: $script_runner !!! \n"
+elif [ $whichRuby -eq 3 ] ; then
+  echo -e "\n\n!!! Set to install rbenv for user: $script_runner !!! \n"
 else
-  echo -e "\n\n!!! Must choose to build Ruby or install RVM, exiting !!!"
+  echo -e "\n\n!!! Must choose to build Ruby, RVM or rbenv, exiting !!!"
   exit 1
 fi
 
@@ -152,6 +155,18 @@ elif [ $whichRuby -eq 2 ] ; then
   echo "=> More information about Rubies can be found at http://rvm.beginrescueend.com/rubies/default/"
   rvm --default use $ruby_version >> $log_file 2>&1
   echo "==> done..."
+elif [ $whichRuby -eq 3 ] ; then
+  echo -e "\n=> Installing rbenv https://github.com/sstephenson/rbenv \n"
+  git clone git://github.com/sstephenson/rbenv.git ~/.rbenv
+  echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
+  echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
+  echo -e "\n=> Installing ruby-build  \n"
+  git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+  echo -e "\n=> Installing ruby \n"
+  rbenv install $ruby_version_string >> $log_file 2>&1
+  rbenv rehash
+  rbenv global $ruby_version_string
+  echo "===> done..."
 else
   echo "How did you even get here?"
   exit 1
@@ -169,6 +184,8 @@ if [ $whichRuby -eq 1 ] ; then
   sudo gem update --system --no-ri --no-rdoc >> $log_file 2>&1
 elif [ $whichRuby -eq 2 ] ; then
   gem update --system --no-ri --no-rdoc >> $log_file 2>&1
+elif [ $whichRuby -eq 3 ] ; then
+  gem update --system --no-ri --no-rdoc >> $log_file 2>&1
 fi
 echo "==> done..."
 
@@ -176,6 +193,8 @@ echo -e "\n=> Installing Bundler, Passenger and Rails..."
 if [ $whichRuby -eq 1 ] ; then
   sudo gem install bundler passenger rails --no-ri --no-rdoc -f >> $log_file 2>&1
 elif [ $whichRuby -eq 2 ] ; then
+  gem install bundler passenger rails --no-ri --no-rdoc -f >> $log_file 2>&1
+elif [ $whichRuby -eq 3 ] ; then
   gem install bundler passenger rails --no-ri --no-rdoc -f >> $log_file 2>&1
 fi
 echo "==> done..."
