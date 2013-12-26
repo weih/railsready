@@ -157,6 +157,15 @@ elif [ $whichRuby -eq 3 ] ; then
   git clone git://github.com/sstephenson/rbenv.git ~/.rbenv
   echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
   echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
+  if [ -f ~/.profile ] ; then
+    source ~/.profile
+  fi
+  if [ -f ~/.bashrc ] ; then
+    source ~/.bashrc
+  fi
+  if [ -f ~/.bash_profile ] ; then
+    source ~/.bash_profile
+  fi
   echo -e "\n=> Installing ruby-build  \n"
   git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
   echo -e "\n=> Installing ruby \n"
