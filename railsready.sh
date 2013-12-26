@@ -12,11 +12,11 @@
 shopt -s nocaseglob
 set -e
 
-ruby_version="2.0.0"
-ruby_version_string="2.0.0-p353"
-ruby_source_url="http://ftp.ruby-lang.org/pub/ruby/2.0/ruby-2.0.0-p353.tar.gz"
-ruby_source_tar_name="ruby-2.0.0-p353.tar.gz"
-ruby_source_dir_name="ruby-2.0.0-p353"
+ruby_version="2.1.0"
+ruby_version_string="2.1.0"
+ruby_source_url="http://cache.ruby-lang.org/pub/ruby/2.1/ruby-2.1.0.tar.gz"
+ruby_source_tar_name="ruby-2.1.0.tar.gz"
+ruby_source_dir_name="ruby-2.1.0"
 script_runner=$(whoami)
 railsready_path=$(cd && pwd)/railsready
 log_file="$railsready_path/install.log"
