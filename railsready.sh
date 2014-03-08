@@ -20,6 +20,7 @@ ruby_source_dir_name="ruby-2.1.0"
 script_runner=$(whoami)
 railsready_path=$(cd && pwd)/railsready
 log_file="$railsready_path/install.log"
+system_os=`uname | env LANG=C LC_ALL=C LC_CTYPE=C tr '[:upper:]' '[:lower:]'`
 
 control_c()
 {
@@ -37,14 +38,14 @@ echo "########## Rails Ready ##########"
 echo "#################################"
 
 #determine the distro
-if [[ $MACHTYPE = *linux* ]] ; then
+if [[ $system_os = *linux* ]] ; then
   distro_sig=$(cat /etc/issue)
   if [[ $distro_sig =~ ubuntu ]] ; then
     distro="ubuntu"
   elif [[ $distro_sig =~ centos ]] ; then
     distro="centos"
   fi
-elif [[ $MACHTYPE = *darwin* ]] ; then
+elif [[ $system_os = *darwin* ]] ; then
   distro="osx"
     if [[ ! -f $(which gcc) ]]; then
       echo -e "\nXCode/GCC must be installed in order to build required software. Note that XCode does not automatically do this, but you may have to go to the Preferences menu and install command line tools manually.\n"
@@ -97,7 +98,7 @@ echo "==> done..."
 
 echo -e "\n=> Downloading and running recipe for $distro...\n"
 #Download the distro specific recipe and run it, passing along all the variables as args
-if [[ $MACHTYPE = *linux* ]] ; then
+if [[ $system_os = *linux* ]] ; then
   wget --no-check-certificate -O $railsready_path/src/$distro.sh https://raw.github.com/joshfng/railsready/master/recipes/$distro.sh && cd $railsready_path/src && bash $distro.sh $ruby_version $ruby_version_string $ruby_source_url $ruby_source_tar_name $ruby_source_dir_name $whichRuby $railsready_path $log_file
 else
   cd $railsready_path/src && curl -O https://raw.github.com/joshfng/railsready/master/recipes/$distro.sh && bash $distro.sh $ruby_version $ruby_version_string $ruby_source_url $ruby_source_tar_name $ruby_source_dir_name $whichRuby $railsready_path $log_file
