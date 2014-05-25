@@ -40,10 +40,13 @@ echo "#################################"
 #determine the distro
 if [[ $system_os = *linux* ]] ; then
   distro_sig=$(cat /etc/issue)
+  redhat_release='/etc/redhat-release'
   if [[ $distro_sig =~ ubuntu ]] ; then
     distro="ubuntu"
-  elif [[ $distro_sig =~ centos ]] ; then
-    distro="centos"
+  else
+      if [ -e $redhat_release ] ; then
+          distro="centos"
+      fi
   fi
 elif [[ $system_os = *darwin* ]] ; then
   distro="osx"
