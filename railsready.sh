@@ -70,7 +70,7 @@ echo " * Bundler, Passenger, and Rails gems"
 echo " * Git"
 
 echo -e "\nThis script is always changing."
-echo "Make sure you got it from https://github.com/joshfng/railsready"
+echo "Make sure you got it from https://github.com/weih/railsready"
 
 # Check if the user has sudo privileges.
 sudo -v >/dev/null 2>&1 || { echo $script_runner has no sudo privileges ; exit 1; }
@@ -102,9 +102,9 @@ echo "==> done..."
 echo -e "\n=> Downloading and running recipe for $distro...\n"
 #Download the distro specific recipe and run it, passing along all the variables as args
 if [[ $system_os = *linux* ]] ; then
-  wget --no-check-certificate -O $railsready_path/src/$distro.sh https://raw.githubusercontent.com/joshfng/railsready/master/recipes/$distro.sh && cd $railsready_path/src && bash $distro.sh $ruby_version $ruby_version_string $ruby_source_url $ruby_source_tar_name $ruby_source_dir_name $whichRuby $railsready_path $log_file
+  wget --no-check-certificate -O $railsready_path/src/$distro.sh https://raw.githubusercontent.com/weih/railsready/master/recipes/$distro.sh && cd $railsready_path/src && bash $distro.sh $ruby_version $ruby_version_string $ruby_source_url $ruby_source_tar_name $ruby_source_dir_name $whichRuby $railsready_path $log_file
 else
-  cd $railsready_path/src && curl -O https://raw.githubusercontent.com/joshfng/railsready/master/recipes/$distro.sh && bash $distro.sh $ruby_version $ruby_version_string $ruby_source_url $ruby_source_tar_name $ruby_source_dir_name $whichRuby $railsready_path $log_file
+  cd $railsready_path/src && curl -O https://raw.githubusercontent.com/weih/railsready/master/recipes/$distro.sh && bash $distro.sh $ruby_version $ruby_version_string $ruby_source_url $ruby_source_tar_name $ruby_source_dir_name $whichRuby $railsready_path $log_file
 fi
 echo -e "\n==> done running $distro specific commands..."
 
@@ -157,21 +157,23 @@ elif [ $whichRuby -eq 2 ] ; then
   rvm --default use $ruby_version >> $log_file 2>&1
   echo "==> done..."
 elif [ $whichRuby -eq 3 ] ; then
-  echo -e "\n=> Installing rbenv https://github.com/sstephenson/rbenv \n"
-  git clone git://github.com/sstephenson/rbenv.git ~/.rbenv
-  echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
-  echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
-  if [ -f ~/.profile ] ; then
-    source ~/.profile
+  if [ ! -d "~/.rbenv" ]; then
+    echo -e "\n=> Installing rbenv https://github.com/sstephenson/rbenv \n"
+    git clone git://github.com/sstephenson/rbenv.git ~/.rbenv
+    echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
+    echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
+    if [ -f ~/.profile ] ; then
+      source ~/.profile
+    fi
+    if [ -f ~/.bashrc ] ; then
+      source ~/.bashrc
+    fi
+    if [ -f ~/.bash_profile ] ; then
+      source ~/.bash_profile
+    fi
+    echo -e "\n=> Installing ruby-build  \n"
+    git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
   fi
-  if [ -f ~/.bashrc ] ; then
-    source ~/.bashrc
-  fi
-  if [ -f ~/.bash_profile ] ; then
-    source ~/.bash_profile
-  fi
-  echo -e "\n=> Installing ruby-build  \n"
-  git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
   echo -e "\n=> Installing ruby \n"
   rbenv install $ruby_version_string >> $log_file 2>&1
   rbenv rehash
